@@ -62,11 +62,11 @@ return { -- LSP Plugins
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('cr', vim.lsp.buf.rename, '[C]ode [R]ename')
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
-        map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+        map('ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
@@ -124,7 +124,7 @@ return { -- LSP Plugins
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
-      -- rust_analyzer = {},
+      rust_analyzer = {},
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:
       --    https://github.com/pmizio/typescript-tools.nvim
@@ -140,12 +140,12 @@ return { -- LSP Plugins
     --    :Mason
     --
     -- You can press `g?` for help in this menu.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
+    -- local ensure_installed = vim.tbl_keys(servers or {})
+    local ensure_installed = {
       'lua_ls', -- Lua Language server
       'stylua', -- Used to format Lua code
       -- You can add other tools here that you want Mason to install
-    })
+    }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
